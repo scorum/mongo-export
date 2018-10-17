@@ -1,13 +1,15 @@
 import argparse
 import json
-import logging
 
 import pymongo
 import yaml
 from scorum.api import helpers
 from scorum.utils.time import to_date
+from scorum.utils.logger import setup_logger, DEFAULT_CONFIG, get_logger, LOG_LEVEL_MAP
 
 from modex.const import DATE_FIELDS, ASSET_FIELDS
+
+logger = get_logger("mongo")
 
 
 def asset_to_float(value):
@@ -28,7 +30,7 @@ def asset_to_float(value):
 
 
 def mongo_posts(config):
-    print("start sync posts")
+    logger.info("start sync posts")
 
     posts = helpers.get_all_posts(config['node'][0])
 
@@ -54,16 +56,7 @@ def mongo_posts(config):
 
 
 def configure_logger(config):
-    if config['level'] == 'debug':
-        logging.getLogger().setLevel(logging.DEBUG)
-    elif config['level'] == 'info':
-        logging.getLogger().setLevel(logging.INFO)
-    elif config['level'] == 'error':
-        logging.getLogger().setLevel(logging.ERROR)
-    elif config['level'] == 'critical':
-        logging.getLogger().setLevel(logging.CRITICAL)
-    elif config['level'] == 'off':
-        logging.getLogger().setLevel(logging.NOTSET)
+    logger.setLevel(LOG_LEVEL_MAP[config['level']])
 
 
 def default_config():
@@ -90,7 +83,7 @@ def get_config(args):
             config_file = None
 
     if config_file is not None:
-        logging.info("loading config file {}".format(config_file))
+        logger.info("loading config file {}".format(config_file))
         with open(config_file, "r") as file:
             d = file.read()
             return yaml.load(d)
@@ -99,8 +92,7 @@ def get_config(args):
 
 
 def main():
-    logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s %(levelname)-6s %(name)-12s %(message)s')
+    setup_logger(**DEFAULT_CONFIG)
 
     parser = argparse.ArgumentParser(description='gather posts from blockchain node to the mongodb.')
     parser.add_argument('--version', action='store_true', help='Show version information')
