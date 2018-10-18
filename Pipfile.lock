@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1d94b26c70bdfc6946bb3c277066e73b7dda8a1577d424a966949aee2ad9fb12"
+            "sha256": "65a4445f484e7a347dfe57522c4b7a38c9a22ccad5e67a22ddd2b52775e681ab"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -248,7 +248,7 @@
         "scorum": {
             "editable": true,
             "git": "https://github.com/scorum/scorum-py.git",
-            "ref": "develop"
+            "ref": "v0.0.1"
         },
         "scrypt": {
             "hashes": [

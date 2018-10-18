@@ -6,9 +6,9 @@ url = "https://pypi.org/simple"
 [dev-packages]
 
 [packages]
-pyyaml = "*"
-pymongo = "*"
-scorum = {ref = "develop", git = "https://github.com/scorum/scorum-py.git", editable = true}
+pyyaml = "==3.13"
+pymongo = "==3.7.2"
+scorum = {editable = true, ref = "v0.0.1", git = "https://github.com/scorum/scorum-py.git"}
 
 [requires]
 python_version = "3.5"
