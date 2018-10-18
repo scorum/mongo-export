@@ -8,3 +8,5 @@ How to install
 ```
 pipenv --three install
 pipenv run pip install .
+pipenv shell
+modex
