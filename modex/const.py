@@ -1,0 +1,30 @@
+ASSET_FIELDS = ("author_payout_scr_value",
+                "author_payout_sp_value",
+                "beneficiary_payout_scr_value",
+                "beneficiary_payout_sp_value",
+                "curator_payout_scr_value",
+                "curator_payout_sp_value",
+                "from_children_payout_scr_value",
+                "from_children_payout_sp_value",
+                "to_parent_payout_scr_value",
+                "to_parent_payout_sp_value",
+                "total_payout_scr_value",
+                "total_payout_sp_value",
+                "max_accepted_payout",
+                "promoted",
+                "pending_payout_scr",
+                "pending_payout_sp")
+
+INT_FIELDS = ("body_length",
+              "children",
+              "abs_rshares",
+              "net_rshares",
+              "net_votes",
+              "children_abs_rshares",
+              "total_vote_weight",
+              "vote_rshares",
+              "depth",
+              "id",
+              "root_comment")
+
+DATE_FIELDS = ("active", "created", "cashout_time", "last_payout", "last_update")
